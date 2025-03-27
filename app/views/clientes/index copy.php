@@ -1,6 +1,12 @@
 <h1>Lista de Clientes</h1>
+<?php var_dump($clientes); ?>
+<?php
+    echo '<pre>';
+    print_r($clientes);
+    echo '</pre>';
+?>
 
-
+<table border="1" cellpadding="10">
     <thead>
         <tr>
             <th>ID</th>

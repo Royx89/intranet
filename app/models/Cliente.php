@@ -1,5 +1,6 @@
 <?php
 class Cliente extends Model {
+    
     public function obtenerTodos() {
         $stmt = $this->db->prepare("SELECT * FROM clientes WHERE borrado = 0");
         $stmt->execute();
@@ -14,9 +15,13 @@ class Cliente extends Model {
     }
 
     public function insertar($data) {
-        $stmt = $this->db->prepare("INSERT INTO clientes (nombre_cliente, fecha_nacimiento, sexo, telefono, correo, calle, colonia, ciudad, codigo_postal, estado, pais, creado_por)
-            VALUES (:nombre_cliente, :fecha_nacimiento, :sexo, :telefono, :correo, :calle, :colonia, :ciudad, :codigo_postal, :estado, :pais, :creado_por)");
-
+        $stmt = $this->db->prepare("INSERT INTO clientes (
+            nombre_cliente, fecha_nacimiento, sexo, telefono, correo, calle, colonia, ciudad,
+            codigo_postal, estado, pais, creado_por, borrado
+        ) VALUES (
+            :nombre_cliente, :fecha_nacimiento, :sexo, :telefono, :correo, :calle, :colonia, :ciudad,
+            :codigo_postal, :estado, :pais, :creado_por, 0
+        )");
         return $stmt->execute($data);
     }
 
