@@ -1,13 +1,10 @@
 <?php
-class ClienteController extends Controller{
+class ClienteController extends Controller {
     public function index() {
         $modelo = $this->model('Cliente');
         $clientes = $modelo->obtenerTodos();
         $this->view('clientes/index', ['clientes' => $clientes]);
     }
-    
-    
-    
 
     public function crear() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -23,23 +20,22 @@ class ClienteController extends Controller{
                 'codigo_postal' => $_POST['codigo_postal'],
                 'estado' => $_POST['estado'],
                 'pais' => $_POST['pais'],
-                'creado_por' => $_SESSION['usuario']['id_usuario'] ?? 1 // por si no hay sesión
+                'creado_por' => $_SESSION['usuario']['id_usuario'] ?? 1
             ];
-    
+
             $modelo = $this->model('Cliente');
             $modelo->insertar($data);
-    
-            // Redirecciona después de guardar
+
             header('Location: ?url=cliente/index');
             exit;
         }
-    
+
         $this->view('clientes/crear');
     }
 
     public function editar($id) {
         $modelo = $this->model('Cliente');
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'id_cliente' => $id,
@@ -55,15 +51,24 @@ class ClienteController extends Controller{
                 'estado' => $_POST['estado'],
                 'pais' => $_POST['pais']
             ];
-    
+
             $modelo->actualizar($data);
-            header('Location: index');
+            header('Location: ?url=cliente/index');
             exit;
         }
-    
+
         $cliente = $modelo->obtenerPorId($id);
         $this->view('clientes/editar', ['cliente' => $cliente]);
     }
+
+    public function eliminar($id) {
+        $modelo = $this->model('Cliente');
+        $modelo->eliminar($id);
+        header('Location: ?url=cliente/index');
+        exit;
+    }
+
     
     
+
 }

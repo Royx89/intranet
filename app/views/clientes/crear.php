@@ -1,8 +1,10 @@
-<h1>Crear Nuevo Cliente</h1>
-
-<form action="" method="POST">
-    <label>Nombre:</label>
-    <input type="text" name="nombre_cliente" required><br><br>
+<div class="container mt-4">
+    <h2>Editar Cliente</h2>
+    <form method="post">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" name="nombre_cliente" value="<?= $cliente['nombre_cliente'] ?>" class="form-control">
+        </div>
 
     <label>Fecha de Nacimiento:</label>
     <input type="date" name="fecha_nacimiento"><br><br>
@@ -34,5 +36,6 @@
     <label>País:</label>
     <input type="text" name="pais"><br><br>
 
-    <button type="submit">Guardar</button>
-</form>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
