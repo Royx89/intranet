@@ -34,6 +34,7 @@
                             <td>
                                 <a href="?url=cliente/editar/<?= $cliente['id_cliente'] ?>" class="btn btn-sm btn-primary">Editar</a>
                                 <a href="?url=cliente/eliminar/<?= $cliente['id_cliente'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este cliente?')">Eliminar</a>
+                                <a href="?url=cliente/ver/<?= $cliente['id_cliente'] ?>" class="btn btn-info btn-sm">Ver</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

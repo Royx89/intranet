@@ -68,7 +68,15 @@ class ClienteController extends Controller {
         exit;
     }
 
+    public function ver($id) {
+        $modelo = $this->model('Cliente');
+        $cliente = $modelo->obtenerPorId($id);
     
+        if (!$cliente || $cliente['borrado']) {
+            die("Cliente no encontrado o eliminado.");
+        }
     
+        $this->view('clientes/ver', ['cliente' => $cliente]);
+    }
 
 }
