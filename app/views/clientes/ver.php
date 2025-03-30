@@ -29,7 +29,18 @@
         </div>
     </div>
 
-    <a href="?url=cliente/index" class="btn btn-secondary mt-3">Volver</a>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+    <a href="?url=cliente/index" class="btn btn-secondary">Volver</a>
+    <div class="d-flex gap-2">
+        <a href="?url=cliente/editar/<?= $cliente['id_cliente'] ?>" class="btn btn-warning">Editar</a>
+        <a href="?url=cliente/eliminar/<?= $cliente['id_cliente'] ?>" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</a>
+        <button onclick="window.print()" class="btn btn-outline-primary">🖨 Imprimir</button>
+    </div>
+</div>
+
+
+    
 </div>
 
 </body>
