@@ -19,8 +19,12 @@ class AuthController extends Controller {
             if ($user && password_verify($contrasena, $user['contrasena'])) {
                 session_start();
                 $_SESSION['usuario'] = $user;
-                echo "Sesión iniciada correctamente. ¡Bienvenido, " . $user['nombre_usuario'] . "!";
-            } else {
+            
+                // ✅ Redirige a la lista de usuarios
+                header('Location: ?url=usuario/index');
+                exit;
+            }
+            else {
                 echo "Usuario o contraseña incorrectos.";
             }
         } else {
